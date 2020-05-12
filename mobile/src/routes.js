@@ -7,9 +7,10 @@ import Cadastro from './pages/Cadastro/index';
 import Home from  './pages/Home/index';
 
 const Routes = createAppContainer(
+
     createDrawerNavigator({
       Login,
-      Cadastro,
+      Cadastro,  
       Home
     },{ contentComponent: CustomDrawerContentComponent,          
     })
