@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, SafeAreaView, AsyncStorage  } from 'react-native';
+import { ImageBackground,TouchableOpacity, AsyncStorage  } from 'react-native';
 
 import Loading from '../../components/Loading/index';
 import {
@@ -20,9 +20,7 @@ import api from '../../services/index';
 
 export default function Login({ navigation }) {
 
-  const background = require('../../assets/background.jpg');
-
-
+  const background = require('../../assets/img/bg-bus.jpg');
 
   const [loading,setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -54,26 +52,25 @@ export default function Login({ navigation }) {
       console.log('Usuario inválido!');
       setLoading(false);
     }
-      
-    //
+  }
 
+  function goToRegister(){
+    navigation.navigate('Cadastro');
   }
   useEffect(() => {
   }, []);
 
 
   return (
-      <SafeAreaView>
+     
         <ImageBackground source={background}  style={{width: '100%', height: '100%'}} >  
           <View>
               <Logo source={require('../../assets/icon.png')}/>
               <Br/>
               <Div>
                   <Br/>
-                  <Label>E-mail:</Label>
-                  <Input value={email} onChangeText={setEmail}/>
-                  <Label>Senha:</Label>
-                  <Input value={senha} onChangeText={setSenha} secureTextEntry />            
+                  <Input value={email} onChangeText={setEmail} placeholder='E-mail' placeholderTextColor='#424949'/>
+                  <Input value={senha} onChangeText={setSenha} secureTextEntry placeholder='Senha' placeholderTextColor='#424949'/>            
                   <Br/>
                   <Button onPress={Login}>
                     <TextButton>Login</TextButton>
@@ -82,12 +79,13 @@ export default function Login({ navigation }) {
               </Div>
               <Br/>
               <TextLink>Esqueceu sua senha ?</TextLink>
-              <DivCad>
-                <TextCenter>Criar Conta</TextCenter>
+              <DivCad> 
+                <TouchableOpacity onPress={goToRegister}>
+                  <TextCenter>Criar Conta</TextCenter>
+                </TouchableOpacity>
               </DivCad>
               <Loading loading={loading}/>
           </View>
         </ImageBackground>
-      </SafeAreaView>
   );
 }
