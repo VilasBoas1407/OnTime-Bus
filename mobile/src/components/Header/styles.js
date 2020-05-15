@@ -16,7 +16,7 @@ export const View = styled.View`
 `;
 
 export const DIcon = styled.View`
-    margin-left: -300px;
+    margin-left: -350px;
     margin-top: 10px;
 `;
 

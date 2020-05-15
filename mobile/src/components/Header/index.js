@@ -11,15 +11,6 @@ import {
 
 export default function Header({ navigation }) {
   
-  function Voltar(){
-    console.log('Voltar')
-    navigation.navigate('Login');
-  }
-  console.log(navigation);
-  useEffect(() => {
-
-  }, []);
-
   return (
     <SafeAreaView>
       <View>

@@ -26,8 +26,8 @@ export const Find = styled.View`
     height: 45px;
     width:45px;
     background-color:#48126a;
-    margin-left: 300px;
-    margin-top: -45px;
+    margin-left: 360px;
+    margin-top: -40px;
     padding-top:5px;
     border-radius: 30px;
 `;

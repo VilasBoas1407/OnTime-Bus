@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,AsyncStorage} from 'react';
 import { Container, 
   Top, 
   Avatar,
@@ -12,22 +12,29 @@ import { Icon } from 'react-native-elements'
 
 
 export default function CustomDrawerContentComponent({navigation}) {  
-  
+
   function LogOut() {
     navigation.navigate('Login');
+  }  
+  async function load(){
+    const nome = await AsyncStorage.getItem('nome'); 
+    console.log(nome);
   }
-  
+
+  useEffect(() => {
+    load();
+  }, []);   
   return(      
         <Container>
           <Top>
             <Avatar source={require('../../assets/user.jpg')}/>
-            <User>Olá, Lucas</User>
+            <User>Olá</User>
           </Top>          
           <Nav>
             <Tab>Minha Conta</Tab>
             <Tab>Linhas Favoritas</Tab>
+            <Tab>Quadro de hórario</Tab>
             <Tab>Histórico</Tab>
-
             <Tab>Solicitar assistência</Tab>
             <TabButton onPress={LogOut}>
               <Tab>Sair</Tab>

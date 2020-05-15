@@ -34,8 +34,8 @@ export default function Cadastro({ navigation }){
     //#endregion 
     
     async function register(){
-        console.log("Entrou");
-        //setLoading(true);
+
+        setLoading(true);
         const user = {};
         user.DS_NOME = nome;
         user.DS_SOBRENOME = sobrenome;
@@ -48,8 +48,9 @@ export default function Cadastro({ navigation }){
             console.log(response);
             console.log('salvo com sucesso')
         }); 
-        //setLoading(false);
-        
+        setLoading(false);
+        //await AsyncStorage.setItem('userData', user.data.userData[0]);
+        navigation.navigate('Home');
     }
     function goBack(){
         console.log('Oi');

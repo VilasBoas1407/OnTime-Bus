@@ -25,7 +25,17 @@ export default function Login({ navigation }) {
   const [loading,setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  
+
+  async function _storeData (data){
+    try {
+      const email = data.email;
+      const nome = data.nome;
+      await AsyncStorage.setItem('email',email);
+      await AsyncStorage.setItem('nome',nome);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
  async function Login (){
     
@@ -36,16 +46,16 @@ export default function Login({ navigation }) {
     const userData = { DS_EMAIL, DS_SENHA };
     console.log(userData);
 
-    setLoading(true);
+    //setLoading(true);
 
     const response = await api.get('/user',{
       params : userData
     });
     const user = response.data;
     if(user.data.valid){
-      console.log(user.data.userData[0]);
-      //await AsyncStorage.setItem('userData', user.data.userData[0]);
-      setLoading(false);
+      console.log(user.data.userData[0]); 
+     _storeData(user.data.userData[0]);
+      //setLoading(false);
       navigation.navigate('Home');
     }
     else {

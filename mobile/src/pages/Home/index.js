@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Text,View,StyleSheet} from 'react-native';
+import {Text,View,StyleSheet, TouchableOpacity} from 'react-native';
 import { Icon } from 'react-native-elements';
 import MapView, { Marker,Callout } from 'react-native-maps'
 import {requestPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
@@ -39,7 +39,7 @@ export default function Home({ navigation }) {
               longitudeDelta: 0.01,
           })
       }
-  }
+  };
   
     loadInitialPosition();
   }, []);
@@ -58,20 +58,11 @@ export default function Home({ navigation }) {
             color='#48126a'
             size={20}>
         </Icon>
-       <TextInput placeholder={'Vamos para onde ?'}/>
+       <TextInput placeholder={'Vamos para onde ?'} pla/>
       </FindBar>
      <Mapa>
         <MapView initialRegion={currentRegion} style={styles.map}>      
       </MapView>
-       <Find>
-       <Icon  
-            name='crosshairs'
-            type='font-awesome'
-            color='#FFF'
-            size={33}>
-        </Icon>
-       
-       </Find>
      </Mapa>
     <Lines>
     <NextBus/>
