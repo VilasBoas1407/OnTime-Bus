@@ -5,12 +5,9 @@ var Usuario = {
 
     async insertUser(user){
         try{
-
-            knex('tb_usuario').insert(user).then(() => console.log("data inserted"))
-            .catch((err) => { console.log(err); throw err })
-            .finally(() => {
-                knex.destroy();
-            });
+            
+            await knex('tb_usuario').insert(user).then(() => console.log("data inserted"))
+            .catch((err) => { console.log(err); throw err }); 
         }
         catch(ex){
             return ex;
@@ -20,6 +17,7 @@ var Usuario = {
     async validarEmail(email){
         var valid = false;
         try{
+
             await knex('tb_usuario').select()
             .where('DS_EMAIL',email).then(function(res){
                 console.log(res)
@@ -29,8 +27,7 @@ var Usuario = {
                 else{
                     valid = true;
                 }
-            }); 
-            
+            });
             return valid;
 
         }

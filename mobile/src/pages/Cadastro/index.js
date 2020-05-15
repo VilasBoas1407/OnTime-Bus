@@ -25,6 +25,7 @@ export default function Cadastro({ navigation }){
     //#region Declaração de Variavéis
     
     const [nome,setNome] = useState(null);
+    const [sobrenome,setSobreNome] = useState(null);
     const [email,setEmail] = useState(null);
     const [senha,setSenha] = useState(null);
     const [confirm_senha,setConfirm] = useState(null);
@@ -32,15 +33,22 @@ export default function Cadastro({ navigation }){
     const [loading,setLoading] = useState(false);
     //#endregion 
     
-    function register(){
+    async function register(){
+        console.log("Entrou");
+        //setLoading(true);
+        const user = {};
+        user.DS_NOME = nome;
+        user.DS_SOBRENOME = sobrenome;
+        user.DS_EMAIL = email;
+        user.DS_SENHA = senha;
+        user.DS_SENHA_CONF = confirm_senha;
 
-        setLoading(true);
-        const userData = {};
-        userData.nome = nome;
-        userData.email = email;
-        userData.senha = senha;
-        userData.confirm_senha = confirm_senha;
-        setLoading(false);
+        await api.post('/user', { user })
+        .then(function(response){
+            console.log(response);
+            console.log('salvo com sucesso')
+        }); 
+        //setLoading(false);
         
     }
     function goBack(){
@@ -71,6 +79,7 @@ export default function Cadastro({ navigation }){
                                 <Img source={require('../../assets/img/amigo.png')}/>
                                 <Label>Bem vindo, vamos fazer seu cadastro!</Label>
                                 <Input value={nome} onChangeText={setNome} placeholder='Nome' placeholderTextColor='#424949'/>
+                                <Input value={sobrenome} onChangeText={setSobreNome} placeholder='Sobrenome' placeholderTextColor='#424949'/>
                                 <Input value={email} onChangeText={setEmail} placeholder='E-mail' placeholderTextColor='#424949'/>
                                 <Input value={senha} onChangeText={setSenha} secureTextEntry placeholder='Senha' placeholderTextColor='#424949'/>
                                 <Input value={confirm_senha} onChangeText={setConfirm} secureTextEntry placeholder='Confirme sua senha' placeholderTextColor='#424949'/>            
@@ -81,6 +90,7 @@ export default function Cadastro({ navigation }){
                                     <TextButton>Criar Conta</TextButton>
                                 </Button> 
                         </ViewForm>
+                        <Loading loading={loading}/>
                     </KeyboardAvoidingView>
                 </Body>
         </SafeAreaView>

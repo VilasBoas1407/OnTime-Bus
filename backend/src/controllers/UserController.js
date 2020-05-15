@@ -8,16 +8,26 @@ var UserController = {
     async insertUser(req,res){
 
         try{
-            let user = req.body;
+            let { user } = req.body;
             var data = {};
-            user.DS_SENHA = sha1(user.DS_SENHA);
             user.DT_CADASTRO = moment().format('YYYY/MM/DD, hh:mm:ss')
+            
             var validarEmail = await userModel.validarEmail(user.DS_EMAIL);
+            var validarData =  await UtilController.ValidarDados(user);
             if(validarEmail){
-                userModel.insertUser(user);
-                data.status = 200;
-                data.msg = "Usuário cadastrado com sucesso!";
-                return res.json({data});
+                if(validarData == "OK"){
+                    delete user.DS_SENHA_CONF;
+                    user.DS_SENHA = sha1(user.DS_SENHA);
+                    userModel.insertUser(user);
+                    data.status = 200;
+                    data.msg = "Usuário cadastrado com sucesso!";
+                    return res.json({data});
+                }
+                else{
+                    data.status = 201;
+                    data.msg = validarData;
+                    return res.json({data});
+                }
             }
             else{
                 data.status = 201;
@@ -29,6 +39,7 @@ var UserController = {
         catch(ex){
             data.status = 400;
             data.msg = ex;
+            return res.json({data});
         }
 
     },
@@ -36,14 +47,11 @@ var UserController = {
     async loginUser(req,res){
         
         try{
-            console.log("Chegou");
-            console.log(req.query);
             var { DS_EMAIL,DS_SENHA } = req.query;
             var data = {}
             DS_SENHA = sha1(DS_SENHA);
 
             var userData = await userModel.loginUser(DS_EMAIL,DS_SENHA);
-            console.log(userData);
             if(userData){
                 data.status = 202;
                 data.valid = true;
