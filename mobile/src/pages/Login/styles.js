@@ -14,20 +14,24 @@ export const Div = styled.View`
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 15%;
+    width: 810px;
+    padding-bottom: 250px;
 `;
 
 export const DivCad = styled.View`
-    margin-top: 80px;
-    margin-left: -30px;
+    margin-left: -25px;
     height: 80px;
     width: 550px;
     background-color:#48126a;
     border-radius: 2;
+    position:absolute;
+    bottom:0;
+    width:100%;
 `;
 
 export const Br = styled.View`
     padding-top:5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 `;
 
 //#endregion
@@ -118,7 +122,7 @@ export const TextLink = styled.Text`
     text-decoration:none;
     text-shadow:0px 1px 0px #aad6a3;
     font-weight: bold;
-    margin-left: 110px;
+    margin-left: 50px;
 `;
 
 //#endregion

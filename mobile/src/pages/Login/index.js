@@ -86,9 +86,8 @@ export default function Login({ navigation }) {
                     <TextButton>Login</TextButton>
                   </Button>
                   <Br/>
+                <TextLink>Esqueceu sua senha ?</TextLink>
               </Div>
-              <Br/>
-              <TextLink>Esqueceu sua senha ?</TextLink>
               <DivCad> 
                 <TouchableOpacity onPress={goToRegister}>
                   <TextCenter>Criar Conta</TextCenter>
