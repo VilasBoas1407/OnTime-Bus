@@ -1,7 +1,7 @@
 {
-  "name": "nodemysql",
+  "name": "ApiOnTimeBus",
   "version": "1.0.0",
-  "description": "tutorial de node com mysql",
+  "description": "Api do aplicativo OnTimeBus",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --inspect src/index.js",
