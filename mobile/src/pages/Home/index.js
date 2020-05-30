@@ -6,6 +6,7 @@ import {requestPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
 
 import Header from '../../components/Header';
 import NextBus from '../../components/NextBus';
+import Loading from '../../components/Loading/index';
 
 import apiBhBus from '../../services/apiBhBus';
 
@@ -18,14 +19,17 @@ import {
 } from './styles';
 
 
+
 export default function Home({ navigation }) {
 
   const [currentRegion,setCurrentRegion] = useState(null);
-  const [points,setPoints] = useState({});
-
+  const [points,setPoints] = useState();
+  
+  const [loading,setLoading] = useState(false);
   useEffect(() => {
 
     async function loadInitialPosition(){
+      setLoading(true);
       const { granted } = await requestPermissionsAsync();
 
       if(granted){
@@ -45,12 +49,17 @@ export default function Home({ navigation }) {
       }
 
       async function loadStopsNear(latitude,longitude){
-         
 
         const point = await apiBhBus.get(`/bus/GetParadasProximas?latitude=${latitude}&longitude=${longitude}`);
-        console.log(points.data.places)
-        await setPoints(point.data);
-        console.log("Pontos:",points.places);
+        if(point)
+          setPoints(point.data);
+        else
+          console.log("Erro API!");
+        setTimeout(() => {
+          console.log("Pontos:",points); 
+          setLoading(false);
+        }, 2000);
+
       };
   };
   
@@ -74,23 +83,24 @@ export default function Home({ navigation }) {
        <TextInput placeholder={'Vamos para onde ?'} pla/>
       </FindBar>
      <Mapa>
-        <MapView initialRegion={currentRegion} style={styles.map}>      
-            {points.places.map(points => (
-                <Marker
-                  key={points.ID_STOP}
-                  coordinate={{
-                    longitude: points.location.coordinates[0],
-                    latitude: points.location.coordinates[1]
-                  }}
-                >
-                <Image  source={require('../../assets/icon/bus.png')} />
-              </Marker>
+        <MapView initialRegion={currentRegion} style={styles.map}>
+            {points.places.map(marker =>(
+              <Marker
+                coordinate={{
+                  latitude: marker.location.coordinates[0],
+                  longitude: marker.location.coordinates[1]
+                }}
+                title={marker.NOME_STOP}
+                description={marker.DESC_STOP}
+                image={require('../../assets/icon/bus.png')}
+              />
             ))}
-      </MapView>
+        </MapView>
      </Mapa>
     <Lines>
     <NextBus/>
     </Lines>
+     <Loading loading={loading}/>
     </View>
   );
 }
