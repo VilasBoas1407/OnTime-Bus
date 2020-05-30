@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ImageBackground,TouchableOpacity, AsyncStorage  } from 'react-native';
 
 import Loading from '../../components/Loading/index';
+import Erro from '../../components/Error/index';
+
 import {
   View,
   Logo,
@@ -20,9 +22,12 @@ import api from '../../services/index';
 
 export default function Login({ navigation }) {
 
+
   const background = require('../../assets/img/bg-bus.jpg');
 
   const [loading,setLoading] = useState(false);
+  const [erro,setErro] = useState(false);
+  const [msgErro,setMsgErro] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -38,6 +43,7 @@ export default function Login({ navigation }) {
   };
 
  async function Login (){
+    setLoading(true);
     
     const DS_EMAIL = email;
     const DS_SENHA = senha;
@@ -46,21 +52,28 @@ export default function Login({ navigation }) {
     const userData = { DS_EMAIL, DS_SENHA };
     console.log(userData);
 
-    //setLoading(true);
+   
 
     const response = await api.get('/user',{
       params : userData
     });
     const user = response.data;
     if(user.data.valid){
-      console.log(user.data.userData[0]); 
      _storeData(user.data.userData[0]);
-      //setLoading(false);
-      navigation.navigate('Home');
+      setTimeout(() => {
+        setLoading(false);
+        navigation.navigate('Home');
+      }, 2000);
     }
     else {
-      console.log('Usuario inválido!');
+      
       setLoading(false);
+      setErro(true);
+      setMsgErro('Usuário e/ou senha errados!');
+      setTimeout(() => {
+        setErro(false);
+      }, 3000);
+      
     }
   }
 
@@ -93,7 +106,9 @@ export default function Login({ navigation }) {
                   <TextCenter>Criar Conta</TextCenter>
                 </TouchableOpacity>
               </DivCad>
+
               <Loading loading={loading}/>
+              <Erro loading={erro} msgErro={msgErro}/>
           </View>
         </ImageBackground>
   );
