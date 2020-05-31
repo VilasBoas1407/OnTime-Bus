@@ -58,18 +58,18 @@ export default function Login({ navigation }) {
       params : userData
     });
     const user = response.data;
-    if(user.data.valid){
-     _storeData(user.data.userData[0]);
+    if(user.valid){
+     _storeData(user.userData[0]);
       setTimeout(() => {
         setLoading(false);
         navigation.navigate('Home');
       }, 2000);
     }
     else {
-      
+      console.log(user);
       setLoading(false);
       setErro(true);
-      setMsgErro('Usuário e/ou senha errados!');
+      setMsgErro(user.msg);
       setTimeout(() => {
         setErro(false);
       }, 3000);

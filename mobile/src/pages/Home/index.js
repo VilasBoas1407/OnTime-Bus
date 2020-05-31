@@ -7,6 +7,7 @@ import {requestPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
 import Header from '../../components/Header';
 import NextBus from '../../components/NextBus';
 import Loading from '../../components/Loading/index';
+import Erro from '../../components/Error/index';
 
 import apiBhBus from '../../services/apiBhBus';
 
@@ -26,6 +27,17 @@ export default function Home({ navigation }) {
   const [points,setPoints] = useState();
   
   const [loading,setLoading] = useState(false);
+  const [erro,setErro] = useState(false);
+  const [msgErro,setMsgErro] = useState('');
+
+  
+  async function loadPoint(point){
+    await setPoints(point.data);
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }
+  
   useEffect(() => {
 
     async function loadInitialPosition(){
@@ -51,14 +63,18 @@ export default function Home({ navigation }) {
       async function loadStopsNear(latitude,longitude){
 
         const point = await apiBhBus.get(`/bus/GetParadasProximas?latitude=${latitude}&longitude=${longitude}`);
-        if(point)
-          setPoints(point.data);
+        if(point){
+          await loadPoint(point);
+        }
         else
-          console.log("Erro API!");
-        setTimeout(() => {
-          console.log("Pontos:",points); 
+        {
           setLoading(false);
-        }, 2000);
+          setErro(true);
+          setMsgErro('Ocorreu um Erro ao tentar localizar os pontos próximos!');
+          setTimeout(() => {
+            setErro(false);
+          }, 3500);
+        }
 
       };
   };
@@ -101,6 +117,7 @@ export default function Home({ navigation }) {
     <NextBus/>
     </Lines>
      <Loading loading={loading}/>
+     <Erro loading={erro} msgErro={msgErro}/>
     </View>
   );
 }

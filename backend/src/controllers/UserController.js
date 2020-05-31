@@ -48,23 +48,33 @@ var UserController = {
         
         try{
             var { DS_EMAIL,DS_SENHA } = req.query;
-            var data = {}
-            DS_SENHA = sha1(DS_SENHA);
+            console.log(DS_EMAIL);
+            if(DS_EMAIL != '' || DS_EMAIL != undefined || DS_EMAIL == null){
 
-            var userData = await userModel.loginUser(DS_EMAIL,DS_SENHA);
-            if(userData){
-                data.status = 202;
-                data.valid = true;
-                data.msg = "Usuário autenticado!";
-                data.userData = userData;
-                return res.json({data});
+                var data = {}
+                DS_SENHA = sha1(DS_SENHA);
+                var userData = await userModel.loginUser(DS_EMAIL,DS_SENHA);
+                if(userData){
+                    data.status = 202;
+                    data.valid = true;
+                    data.msg = "Usuário autenticado!";
+                    data.userData = userData;
+                    return res.json(data);
+                }
+                else{
+                    data.status = 405;
+                    data.valid = false;
+                    data.msg = "E-mail e/ou senha inválidos!"
+                    return res.json(data);
+                }
             }
             else{
-                data.status = 405;
+                data.status = 202;
                 data.valid = false;
-                data.msg = "E-mail ou senha inválidos!"
-                return res.json({data});
+                data.msg = "Favor preencher campos de usuário e senha!";
+                return res.json(data);
             }
+
         }
         catch(err){
             data.status = 500;
