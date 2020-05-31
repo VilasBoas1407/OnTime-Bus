@@ -1,4 +1,4 @@
-import React, {useEffect, useState,AsyncStorage} from 'react';
+import React, {useEffect, AsyncStorage} from 'react';
 import { Container, 
   Top, 
   Avatar,
@@ -16,6 +16,10 @@ export default function CustomDrawerContentComponent({navigation}) {
   function LogOut() {
     navigation.navigate('Login');
   }  
+
+  function goQuadroHorario(){
+    navigation.navigate('QuadroHorario');
+  }
   async function load(){
     const nome = await AsyncStorage.getItem('nome'); 
     console.log(nome);
@@ -33,8 +37,10 @@ export default function CustomDrawerContentComponent({navigation}) {
           <Nav>
             <Tab>Minha Conta</Tab>
             <Tab>Linhas Favoritas</Tab>
-            <Tab>Quadro de hórario</Tab>
-            <Tab>Histórico</Tab>
+            <TabButton onPress={goQuadroHorario}>
+              <Tab>Quadro de hórario</Tab>
+            </TabButton>
+            
             <Tab>Solicitar assistência</Tab>
             <TabButton onPress={LogOut}>
               <Tab>Sair</Tab>

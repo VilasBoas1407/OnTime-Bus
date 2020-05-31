@@ -15,8 +15,7 @@ import {
   Mapa,
   Lines,
   FindBar,
-  TextInput,
-  Find
+  TextInput
 } from './styles';
 
 
@@ -24,20 +23,12 @@ import {
 export default function Home({ navigation }) {
 
   const [currentRegion,setCurrentRegion] = useState(null);
-  const [points,setPoints] = useState();
+  const [points,setPoints] = useState([]);
   
   const [loading,setLoading] = useState(false);
   const [erro,setErro] = useState(false);
   const [msgErro,setMsgErro] = useState('');
-
-  
-  async function loadPoint(point){
-    await setPoints(point.data);
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-  }
-  
+    
   useEffect(() => {
 
     async function loadInitialPosition(){
@@ -62,9 +53,12 @@ export default function Home({ navigation }) {
 
       async function loadStopsNear(latitude,longitude){
 
-        const point = await apiBhBus.get(`/bus/GetParadasProximas?latitude=${latitude}&longitude=${longitude}`);
+        const point = apiBhBus.get(`/bus/GetParadasProximas?latitude=${latitude}&longitude=${longitude}`);
+        setPoints(point);
+        setLoading(false);
         if(point){
-          await loadPoint(point);
+          setPoints(point.data.places);
+          setLoading(false);
         }
         else
         {
@@ -96,11 +90,11 @@ export default function Home({ navigation }) {
             color='#48126a'
             size={20}>
         </Icon>
-       <TextInput placeholder={'Vamos para onde ?'} pla/>
+       <TextInput placeholder={'Vamos para onde ?'} />
       </FindBar>
      <Mapa>
         <MapView initialRegion={currentRegion} style={styles.map}>
-            {points.places.map(marker =>(
+            {/* {points.map(marker =>(
               <Marker
                 coordinate={{
                   latitude: marker.location.coordinates[0],
@@ -110,7 +104,7 @@ export default function Home({ navigation }) {
                 description={marker.DESC_STOP}
                 image={require('../../assets/icon/bus.png')}
               />
-            ))}
+            ))} */}
         </MapView>
      </Mapa>
     <Lines>

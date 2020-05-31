@@ -50,9 +50,7 @@ export default function Login({ navigation }) {
 
 
     const userData = { DS_EMAIL, DS_SENHA };
-    console.log(userData);
-
-   
+  
 
     const response = await api.get('/user',{
       params : userData
