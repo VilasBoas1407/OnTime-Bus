@@ -80,7 +80,7 @@ var UserController = {
             data.status = 500;
             data.valid = false;
             data.msg = "Error:" + err;
-            return res.json({data});
+            return res.json(data);
         }
 
     },

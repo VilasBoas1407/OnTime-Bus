@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground,TouchableOpacity, AsyncStorage  } from 'react-native';
+import { ImageBackground,TouchableOpacity, AsyncStorage,SafeAreaView } from 'react-native';
 
 import Loading from '../../components/Loading/index';
 import Erro from '../../components/Error/index';
@@ -64,7 +64,6 @@ export default function Login({ navigation }) {
       }, 2000);
     }
     else {
-      console.log(user);
       setLoading(false);
       setErro(true);
       setMsgErro(user.msg);
@@ -85,10 +84,11 @@ export default function Login({ navigation }) {
   return (
      
         <ImageBackground source={background}  style={{width: '100%', height: '100%'}} >  
-          <View>
+           <SafeAreaView>
+            <View>
               <Logo source={require('../../assets/icon.png')}/>
               <Br/>
-              <Div>
+                <Div>
                   <Br/>
                   <Input value={email} onChangeText={setEmail} placeholder='E-mail' placeholderTextColor='#424949'/>
                   <Input value={senha} onChangeText={setSenha} secureTextEntry placeholder='Senha' placeholderTextColor='#424949'/>            
@@ -107,7 +107,8 @@ export default function Login({ navigation }) {
 
               <Loading loading={loading}/>
               <Erro loading={erro} msgErro={msgErro}/>
-          </View>
+            </View>
+          </SafeAreaView>
         </ImageBackground>
   );
 }

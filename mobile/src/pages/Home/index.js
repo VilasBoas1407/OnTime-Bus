@@ -53,12 +53,14 @@ export default function Home({ navigation }) {
 
       async function loadStopsNear(latitude,longitude){
 
-        const point = apiBhBus.get(`/bus/GetParadasProximas?latitude=${latitude}&longitude=${longitude}`);
+        const point = await api.get(`bus/GetParadasProximas?latitude=${latitude}&longitude=${longitude}`);
+
         setPoints(point);
         setLoading(false);
         if(point){
-          setPoints(point.data.places);
+          setPoints(point);
           setLoading(false);
+          console.log(points)
         }
         else
         {
@@ -93,8 +95,11 @@ export default function Home({ navigation }) {
        <TextInput placeholder={'Vamos para onde ?'} />
       </FindBar>
      <Mapa>
-        <MapView initialRegion={currentRegion} style={styles.map}>
-            {/* {points.map(marker =>(
+ 
+      <MapView initialRegion={currentRegion} style={styles.map}>
+        {points.places != null || points.places !== undefined && (
+          <View>
+            {points.places.map(marker =>(
               <Marker
                 coordinate={{
                   latitude: marker.location.coordinates[0],
@@ -104,8 +109,11 @@ export default function Home({ navigation }) {
                 description={marker.DESC_STOP}
                 image={require('../../assets/icon/bus.png')}
               />
-            ))} */}
-        </MapView>
+            ))}
+            </View>
+        )}
+      </MapView>
+  
      </Mapa>
     <Lines>
     <NextBus/>

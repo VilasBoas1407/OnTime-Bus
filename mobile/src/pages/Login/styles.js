@@ -13,9 +13,9 @@ export const View = styled.View`
 export const Div = styled.View`
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 15%;
+    margin-left: 10%;
     width: 810px;
-    padding-bottom: 250px;
+    padding-bottom: 50%;
 `;
 
 export const DivCad = styled.View`
@@ -51,7 +51,7 @@ export const Title = styled.Text`
 export const Logo = styled.Image`
     height: 150px;
     width: 120px;
-    margin-left:115px;
+    margin-left:28%;
     margin-top:90px;
     margin-bottom: 30px;
 `;
@@ -108,7 +108,7 @@ export const TextCenter = styled.Text`
     font-family:Roboto;
     font-size:20px;
     padding-top:15px;
-    margin-left:160px;
+    margin-left:39%;
     text-decoration:none;
     text-shadow:0px 1px 0px #aad6a3;
     font-weight: bold;

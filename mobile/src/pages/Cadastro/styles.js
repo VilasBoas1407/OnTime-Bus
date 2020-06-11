@@ -3,8 +3,8 @@ import styled from 'styled-components/native';
 
 export const Body = styled.View`
     padding-top: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-bottom: 10px;
     width: 100%;
     height: 100%;
