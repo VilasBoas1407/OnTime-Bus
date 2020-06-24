@@ -28,6 +28,12 @@ export default function CustomDrawerContentComponent({navigation}) {
       title: 'Linhas Favoritas'
     });
   }
+
+  function goHome(){
+    navigation.navigate('Home',{
+      title : 'OnTimeBus'
+    });
+  }
   
   async function load(){
     const nome = await AsyncStorage.getItem('nome'); 
@@ -45,6 +51,9 @@ export default function CustomDrawerContentComponent({navigation}) {
           </Top>          
           <Nav>
             <Tab>Minha Conta</Tab>
+            <TabButton onPress={goHome}>
+              <Tab>Home</Tab>
+            </TabButton>
             <TabButton onPress={goFavorites}>
               <Tab>Linhas Favoritas</Tab>
             </TabButton>
