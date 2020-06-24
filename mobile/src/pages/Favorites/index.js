@@ -3,8 +3,9 @@ import { Text,View } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 import Header from '../../components/Header';
-import Loading from '../../components/Loading/index';
-import Erro from '../../components/Error/index';
+import Loading from '../../components/Loading';
+import Erro from '../../components/Error';
+import Bus from '../../components/Favorite_Bus';
 
 import { 
     Body,
@@ -39,13 +40,11 @@ export default function Favorites({ navigation }){
                 </FindBar>
                 <Container>
                     <Row>
-                        <Title>Linhas - Clique para mais detalhes:</Title>
-                            <Icon  
-                                name='bus'
-                                type='font-awesome'
-                                color='#48126a'
-                                size={22}>
-                            </Icon>
+                        <Title>Linhas Favoritas :</Title>
+    
+                    </Row>
+                    <Row>
+                        <Bus/>
                     </Row>
                 </Container>
 
