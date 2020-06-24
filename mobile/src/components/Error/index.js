@@ -6,6 +6,7 @@ import {  Background,View, Text,Img } from './styles';
 
 export default function Loader(props) {
   let { loading,msgErro,...attributes } = props;
+  
   if(msgErro == null)
     msgErro = "Oops!Ocorreu um error inesperado!";
 

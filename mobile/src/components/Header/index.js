@@ -9,8 +9,16 @@ import {
   Title
 } from './styles';
 
-export default function Header({ navigation }) {
+export default function Header({navigation}) {
   
+  let title  = navigation.state.params.title;
+
+  if(title == undefined)
+    title  = 'OnTimeBus';
+
+  console.log(navigation.state);
+
+
   return (
     <SafeAreaView>
       <View>
@@ -24,7 +32,7 @@ export default function Header({ navigation }) {
             />
             </TouchableOpacity>
           </DIcon>
-          <Title>OnTime Bus</Title>
+          <Title> {title} </Title>
       </View>
     </SafeAreaView>
   )

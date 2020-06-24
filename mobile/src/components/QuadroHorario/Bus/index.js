@@ -11,7 +11,8 @@ import {
     Data,
     Row,
     FindBar,
-    TextInput
+    TextInput,
+    Last
 } from './styles';
 
 export default function NextBus({navigation}) {
@@ -48,7 +49,7 @@ export default function NextBus({navigation}) {
             <Top>
                 <Line>62 - Savassi / Hospitais - Parador</Line>
             </Top>
-            <Data>Previsão: 10 minutos</Data>
+            <Data>Previsão: 5 minutos</Data>
             <Data>Ponto: Estação Ouro Minas</Data>
             <Data>Número de passageiros: 32</Data>
             <Data>Próximo: 15 minutos</Data>
@@ -73,7 +74,7 @@ export default function NextBus({navigation}) {
         </View>
         <View>
             <Top>
-                <Line>62 - Savassi / Hospitais - Parador</Line>
+                <Line>66 - Savassi / Hospitais - Parador</Line>
             </Top>
             <Data>Previsão: 10 minutos</Data>
             <Data>Ponto: Estação Ouro Minas</Data>
@@ -89,6 +90,7 @@ export default function NextBus({navigation}) {
             <Data>Número de passageiros: 32</Data>
             <Data>Próximo: 15 minutos</Data>
         </View>
+        <Last/>
     </Container>
     </ScrollView>
   )

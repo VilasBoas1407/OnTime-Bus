@@ -29,7 +29,7 @@ export const Title = styled.Text`
     font-size: 24px;
     font-weight: bold;
     margin-top: -30px;
-    margin-left: 35%;
+    margin-left: 25%;
 `;
 
 //#endregion

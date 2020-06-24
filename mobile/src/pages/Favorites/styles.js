@@ -1,6 +1,13 @@
-import React from 'react'
-import styled from 'styled-components/native'
+import styled from 'styled-components/native';
 
+export const Body = styled.View`
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 100%;
+`;
 export const Container = styled.View`
     flex: 1;
 `;

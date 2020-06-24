@@ -18,8 +18,17 @@ export default function CustomDrawerContentComponent({navigation}) {
   }  
 
   function goQuadroHorario(){
-    navigation.navigate('QuadroHorario');
+    navigation.navigate('QuadroHorario',{
+      title:  'Quadro de Horários'
+    });
   }
+
+  function goFavorites(){
+    navigation.navigate('Favorites',{
+      title: 'Linhas Favoritas'
+    });
+  }
+  
   async function load(){
     const nome = await AsyncStorage.getItem('nome'); 
     console.log(nome);
@@ -36,12 +45,14 @@ export default function CustomDrawerContentComponent({navigation}) {
           </Top>          
           <Nav>
             <Tab>Minha Conta</Tab>
-            <Tab>Linhas Favoritas</Tab>
+            <TabButton onPress={goFavorites}>
+              <Tab>Linhas Favoritas</Tab>
+            </TabButton>
             <TabButton onPress={goQuadroHorario}>
               <Tab>Quadro de hórario</Tab>
             </TabButton>
-            
             <Tab>Solicitar assistência</Tab>
+            <Tab>Sobre Nós</Tab>
             <TabButton onPress={LogOut}>
               <Tab>Sair</Tab>
             </TabButton>            

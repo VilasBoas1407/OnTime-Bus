@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 export const Body = styled.View`
-    padding-top: 20px;
+    padding-top: 15%;
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 10px;

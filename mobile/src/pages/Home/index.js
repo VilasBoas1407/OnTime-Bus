@@ -32,7 +32,7 @@ export default function Home({ navigation }) {
   useEffect(() => {
 
     async function loadInitialPosition(){
-      setLoading(true);
+      //setLoading(true);
       const { granted } = await requestPermissionsAsync();
 
       if(granted){

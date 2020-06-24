@@ -6,13 +6,15 @@ import Login from './pages/Login/index';
 import Cadastro from './pages/Cadastro/index';
 import Home from  './pages/Home/index';
 import QuadroHorario from './pages/QuadroHorario/index';
+import Favorites from './pages/Favorites';
 const Routes = createAppContainer(
 
     createDrawerNavigator({
       Login,
       Cadastro,  
       Home,
-      QuadroHorario
+      QuadroHorario,
+      Favorites,
     },{ contentComponent: CustomDrawerContentComponent,          
     })
   );

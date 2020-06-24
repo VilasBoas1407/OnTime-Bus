@@ -42,6 +42,11 @@ export default function Login({ navigation }) {
     }
   };
 
+ async function SkipLogin(){
+  navigation.navigate('Home',{
+    title : 'OnTimeBus'
+  });
+ } 
  async function Login (){
     setLoading(true);
     
@@ -75,6 +80,7 @@ export default function Login({ navigation }) {
   }
 
   function goToRegister(){
+    console.log("Oi");
     navigation.navigate('Cadastro');
   }
   useEffect(() => {
@@ -93,7 +99,7 @@ export default function Login({ navigation }) {
                   <Input value={email} onChangeText={setEmail} placeholder='E-mail' placeholderTextColor='#424949'/>
                   <Input value={senha} onChangeText={setSenha} secureTextEntry placeholder='Senha' placeholderTextColor='#424949'/>            
                   <Br/>
-                  <Button onPress={Login}>
+                  <Button onPress={SkipLogin}>
                     <TextButton>Login</TextButton>
                   </Button>
                   <Br/>

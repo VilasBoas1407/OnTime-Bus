@@ -15,18 +15,18 @@ export const Div = styled.View`
     margin-bottom: 10px;
     margin-left: 10%;
     width: 810px;
-    padding-bottom: 50%;
+    padding-bottom: 20%;
 `;
 
 export const DivCad = styled.View`
-    margin-left: -25px;
+    margin-left: -6%;
     height: 80px;
-    width: 550px;
+    width: 100%;
     background-color:#48126a;
     border-radius: 2;
-    position:absolute;
-    bottom:0;
-    width:100%;
+    position:relative;
+    margin-bottom: 10%;
+    width:101%;
 `;
 
 export const Br = styled.View`
@@ -66,7 +66,8 @@ export const Label = styled.Text`
 export const Input =styled.TextInput`
     margin-top: 5px;
     margin-bottom:10px;
-    padding-left: 10px;        
+    margin-left: 2%;       
+    padding-left:5px; 
     width: 250px;
     height:40px;
     border-color: #fff;
@@ -89,6 +90,7 @@ export const Button = styled.TouchableOpacity`
 	border-radius:28px;
 	border:1px solid #ffffff;
     color:#ffffff;
+    margin-left:2.5%;
 
 `;
 
@@ -97,7 +99,7 @@ export const TextButton = styled.Text`
     font-family:Roboto;
     font-size:20px;
     padding-top:4px;
-    margin-left:40%;
+    margin-left:39%;
     text-decoration:none;
     text-shadow:0px 1px 0px #aad6a3;
     font-weight: bold;
@@ -122,7 +124,7 @@ export const TextLink = styled.Text`
     text-decoration:none;
     text-shadow:0px 1px 0px #aad6a3;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 8%;
 `;
 
 //#endregion
