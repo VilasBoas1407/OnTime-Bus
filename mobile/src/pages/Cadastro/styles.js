@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 export const Body = styled.View`
-    padding-top: 15%;
+    padding-top: 10%;
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 10px;
+    padding-bottom: 1px;
     width: 100%;
     height: 100%;
 `;
@@ -17,8 +17,8 @@ export const ViewButton = styled.View`
 `;
 
 export const ViewForm = styled.View`
-    margin-top: 25px;
-    padding-left: 45px;
+    margin-top: 1%;
+    padding-left: 10%;
     position: relative;
     background-color:#FCFCFC;
     border-radius:10;
@@ -29,7 +29,7 @@ export const Img = styled.Image`
     height: 170px;
     width: 170px;
     margin-left:70px;
-    margin-top:90px;
+    margin-top:50px;
     margin-bottom: 10px;
 `;
 
@@ -61,7 +61,7 @@ export const Button = styled.TouchableOpacity`
 	border-radius:28px;
 	border:1px solid #ffffff;
     color:#ffffff;
-    margin-bottom: 50px;
+    margin-bottom: 10%;
 
 `;
 

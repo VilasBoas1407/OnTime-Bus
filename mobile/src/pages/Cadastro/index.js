@@ -77,7 +77,7 @@ export default function Cadastro({ navigation }){
                                 />
                             </ViewButton>
                             
-                                <Img source={require('../../assets/img/amigo.png')}/>
+                                <Img source={require('../../assets/img/amigo.png')} height={100}/>
                                 <Label>Bem vindo, vamos fazer seu cadastro!</Label>
                                 <Input value={nome} onChangeText={setNome} placeholder='Nome' placeholderTextColor='#424949'/>
                                 <Input value={sobrenome} onChangeText={setSobreNome} placeholder='Sobrenome' placeholderTextColor='#424949'/>
