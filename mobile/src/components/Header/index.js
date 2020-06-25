@@ -12,11 +12,14 @@ import {
 export default function Header({navigation}) {
   
   let title  = navigation.state.params.title;
+  let margin = navigation.state.params.margin;
 
   if(title == undefined)
     title  = 'OnTimeBus';
 
-  console.log(navigation.state);
+  if(margin == undefined)
+    margin = '32%';
+  console.log(margin);
 
 
   return (
@@ -32,7 +35,7 @@ export default function Header({navigation}) {
             />
             </TouchableOpacity>
           </DIcon>
-          <Title> {title} </Title>
+          <Title style={{ marginLeft: margin}}> {title} </Title>
       </View>
     </SafeAreaView>
   )

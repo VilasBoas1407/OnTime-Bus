@@ -7,6 +7,8 @@ import Cadastro from './pages/Cadastro/index';
 import Home from  './pages/Home/index';
 import QuadroHorario from './pages/QuadroHorario/index';
 import Favorites from './pages/Favorites';
+import Account from './pages/Account';
+
 const Routes = createAppContainer(
 
     createDrawerNavigator({
@@ -15,6 +17,7 @@ const Routes = createAppContainer(
       Home,
       QuadroHorario,
       Favorites,
+      Account,
     },{ contentComponent: CustomDrawerContentComponent,          
     })
   );

@@ -19,19 +19,29 @@ export default function CustomDrawerContentComponent({navigation}) {
 
   function goQuadroHorario(){
     navigation.navigate('QuadroHorario',{
-      title:  'Quadro de Horários'
+      title:  'Quadro de Horários',
+      margin: '26%'
     });
   }
 
   function goFavorites(){
     navigation.navigate('Favorites',{
-      title: 'Linhas Favoritas'
+      title: 'Linhas Favoritas',
+      margin: '30%'
     });
   }
 
   function goHome(){
     navigation.navigate('Home',{
-      title : 'OnTimeBus'
+      title : 'OnTimeBus',
+      margin: '35%'
+    });
+  }
+
+  function goAccount(){
+    navigation.navigate('Account',{
+      title : 'Minha Conta',
+      margin: '35%'
     });
   }
   
@@ -50,7 +60,9 @@ export default function CustomDrawerContentComponent({navigation}) {
             <User>Olá</User>
           </Top>          
           <Nav>
-            <Tab>Minha Conta</Tab>
+            <TabButton onPress={goAccount}>
+              <Tab>Minha Conta</Tab>
+            </TabButton>
             <TabButton onPress={goHome}>
               <Tab>Home</Tab>
             </TabButton>
