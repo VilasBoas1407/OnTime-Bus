@@ -16,6 +16,15 @@ export const Title = styled.Text`
     margin-bottom:15px;
 `;
 
+export const Label = styled.Text`
+    font-family: Roboto;
+    color: #48126a;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left:5px;
+    width:80%;
+`;
+
 export const Button = styled.TouchableOpacity`
     position: relative;
     width: 250px;
@@ -25,7 +34,7 @@ export const Button = styled.TouchableOpacity`
 	border:1px solid #ffffff;
     color:#ffffff;
     margin-left:18%;
-
+    margin-top:5%;
 `;
 
 export const TextButton = styled.Text`
@@ -37,4 +46,8 @@ export const TextButton = styled.Text`
     text-decoration:none;
     text-shadow:0px 1px 0px #aad6a3;
     font-weight: bold;
+`;
+
+export const Row = styled.View`
+    flex-direction: row; 
 `;

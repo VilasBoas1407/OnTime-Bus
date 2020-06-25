@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View,CheckBox } from 'react-native';
+import { View, CheckBox } from 'react-native';
 
 import Header from '../../components/Header';
 import Input from '../../components/Layout/Input';
@@ -9,7 +9,9 @@ import {
     Title,
     Body,
     Button,
-    TextButton
+    TextButton,
+    Label,
+    Row
 } from './styles';
 
 export default function Account({ navigation }){
@@ -29,11 +31,24 @@ export default function Account({ navigation }){
                 <Input placeholder={'Telefone'} Text={' Telefone '} onChangeText={setTeste} value={teste}/> 
 
                 <Title>Configurações:</Title>
-                <CheckBox
-                    center
-                    title='Click Here'
-                    
-                />
+                <Row>
+                <CheckBox/>
+                    <Label>  
+                        Deseja receber informações no seu e-mail ?
+                    </Label>
+                </Row>
+                <Row>
+                <CheckBox/>
+                    <Label>  
+                       Deseja receber mensagens avisando sobre as linhas ?
+                    </Label>
+                </Row>
+                <Row>
+                <CheckBox/>
+                    <Label>  
+                        Desabilitar Notificações
+                    </Label>
+                </Row>
                 <Button>
                     <TextButton>Salvar</TextButton>
                   </Button>

@@ -18,7 +18,7 @@ export const Row = styled.View`
 
 export const Line = styled.Text`
     font-family: Roboto;
-    color: #F4F4F4;
+    color: #000F;
     font-size: 20px;
     font-weight: bold;
     padding-top:3px;
@@ -48,7 +48,7 @@ export const Title = styled.Text`
 
 export const Data = styled.Text`
     font-family: Roboto;
-    color: #2D2D2D;
+    color: #00000F;
     font-size: 18px;
     margin-left: 5px;
     padding-top:1px;
