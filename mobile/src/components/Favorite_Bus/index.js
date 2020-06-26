@@ -31,7 +31,7 @@ export default function NextBus({navigation}) {
                 </Button>
             </Bus>
             <Bus>
-                <Line>62 - Savassi / Hospitais - Parador</Line>
+                <Line>66 - Vilarinho - Centro</Line>
                 <Button>
                     <Icon  
                         name='times'
@@ -42,7 +42,7 @@ export default function NextBus({navigation}) {
                 </Button>
             </Bus>
             <Bus>
-                <Line>62 - Savassi / Hospitais - Parador</Line>
+                <Line>61 - Centro - Direto</Line>
                 <Button>
                     <Icon  
                         name='times'
@@ -53,7 +53,7 @@ export default function NextBus({navigation}) {
                 </Button>
             </Bus>
             <Bus>
-                <Line>62 - Savassi / Hospitais - Parador</Line>
+                <Line>64 - Venda Nova / Assembleia  </Line>
                 <Button>
                     <Icon  
                         name='times'
@@ -64,18 +64,7 @@ export default function NextBus({navigation}) {
                 </Button>
             </Bus>
             <Bus>
-                <Line>62 - Savassi / Hospitais - Parador</Line>
-                <Button>
-                    <Icon  
-                        name='times'
-                        type='font-awesome'
-                        color='#00000f'
-                        size={30}>
-                    </Icon>
-                </Button>
-            </Bus>
-            <Bus>
-                <Line>62 - Savassi / Hospitais - Parador</Line>
+                <Line>63 - Venda Nova / Lagoinha </Line>
                 <Button>
                     <Icon  
                         name='times'

@@ -35,7 +35,8 @@ export const Line = styled.Text`
 
 export const Button = styled.TouchableOpacity`
     margin-top: 2%;
-    margin-left: 12%;
+    margin-left: 80%;
+    position: absolute;
 `;
 export const View = styled.View`
     padding-bottom:10px;

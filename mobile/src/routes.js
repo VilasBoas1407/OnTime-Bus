@@ -8,6 +8,8 @@ import Home from  './pages/Home/index';
 import QuadroHorario from './pages/QuadroHorario/index';
 import Favorites from './pages/Favorites';
 import Account from './pages/Account';
+import Support from './pages/Support';
+
 
 const Routes = createAppContainer(
 
@@ -18,6 +20,7 @@ const Routes = createAppContainer(
       QuadroHorario,
       Favorites,
       Account,
+      Support,
     },{ contentComponent: CustomDrawerContentComponent,          
     })
   );

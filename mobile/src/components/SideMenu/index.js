@@ -44,6 +44,13 @@ export default function CustomDrawerContentComponent({navigation}) {
       margin: '35%'
     });
   }
+
+  function goSupport(){
+    navigation.navigate('Support',{
+      title: 'Fale com a Empresa',
+      margin: '25%'
+    });
+  };
   
   async function load(){
     const nome = await AsyncStorage.getItem('nome'); 
@@ -57,7 +64,7 @@ export default function CustomDrawerContentComponent({navigation}) {
         <Container>
           <Top>
             <Avatar source={require('../../assets/user.jpg')}/>
-            <User>Olá</User>
+            <User>Olá, Lucas</User>
           </Top>          
           <Nav>
             <TabButton onPress={goAccount}>
@@ -72,8 +79,10 @@ export default function CustomDrawerContentComponent({navigation}) {
             <TabButton onPress={goQuadroHorario}>
               <Tab>Quadro de hórario</Tab>
             </TabButton>
-            <Tab>Solicitar assistência</Tab>
-            <Tab>Sobre Nós</Tab>
+            <TabButton onPress={goSupport}>
+              <Tab>Fale com a Empresa</Tab>
+            </TabButton>
+            {/* <Tab>Sobre Nós</Tab> */}
             <TabButton onPress={LogOut}>
               <Tab>Sair</Tab>
             </TabButton>            
